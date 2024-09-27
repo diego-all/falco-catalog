@@ -1,0 +1,1481 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Reglas de Falco</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+        h1 {
+            text-align: center;
+            color: #212529;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            padding: 20px 0;
+            border-bottom: 2px solid #e9ecef;
+        }
+        .rule {
+            background-color: #ffffff;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: flex-start;
+        }
+        .rule img {
+            width: 200px; /* Tamaño fijo para la imagen */
+            height: 200px; /* Tamaño fijo para la imagen */
+            margin-right: 20px;
+        }
+        .rule-content {
+            flex-grow: 1;
+        }
+        .rule-summary {
+            cursor: pointer;
+            font-weight: bold;
+            position: relative;
+            color: #007bff;
+            padding: 10px;
+            margin: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .rule-summary:hover {
+            background-color: #e9ecef;
+        }
+        .rule-detail {
+            display: none;
+            padding: 10px 15px;
+            border-top: 1px solid #dee2e6;
+            color: #495057;
+        }
+        .sub-section {
+            cursor: pointer;
+            margin: 5px 0;
+            position: relative;
+            font-weight: normal;
+            color: #495057;
+        }
+        .sub-detail {
+            display: none;
+            margin-left: 20px;
+            color: #6c757d;
+        }
+        .tooltip {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 12px;
+            z-index: 1;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+        }
+        .info-icon {
+            margin-left: 5px;
+            cursor: pointer;
+            color: #888;
+            font-size: 14px;
+        }
+        .rule-summary:hover .tooltip,
+        .sub-section:hover .tooltip {
+            display: block;
+        }
+        .rule-summary::after {
+            content: '➕';
+            font-size: 14px;
+        }
+        .rule-summary.active::after {
+            content: '➖';
+        }
+    </style>
+    <script>
+        function toggleDetail(id) {
+            var detail = document.getElementById(id);
+            var summary = detail.previousElementSibling;
+            detail.style.display = detail.style.display === 'none' ? 'block' : 'none';
+            summary.classList.toggle('active');
+        }
+    </script>
+</head>
+<body>
+
+    <h1>Listado de Reglas de Falco</h1>
+
+    <!-- Rule 1 -->
+    <div class="rule">
+        <img src="assets/memory-dump.jpg" alt="Imagen de Regla 1">
+        <div class="rule-content">
+            <div class="rule-summary" onclick="toggleDetail('rule1')">
+                Rule 1: Memory dump process in container [custom]
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="rule-detail" id="rule1">
+                <div class="sub-section" onclick="toggleDetail('desc1')">
+                    Description 
+                    <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                        <span class="tooltip">Haz clic para desplegar más información</span>
+                    </span>
+                </div>
+                <div class="sub-detail" id="desc1">
+                    Detects the execution of processes related to memory dumping. Memory dumping can be used to analyze a process's state, including the extraction of sensitive information. The tools typically used for this purpose include dd, coredumpctl, gcore, memdump, dump2fs, and dotnet-dump.
+                </div>
+
+                <div class="sub-section" onclick="toggleDetail('pertinencia1')">
+                    Relevance
+                    <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                        <span class="tooltip">Haz clic para desplegar más información</span>
+                    </span>
+                </div>
+                <div class="sub-detail" id="pertinencia1">
+                    Memory dumps can contain sensitive information, such as credentials, API keys, or user data, that an attacker could extract to compromise the system's security. Detecting their execution allows for the identification of possible data extraction attempts or malicious activities within the cluster.
+                </div>
+
+                <div class="sub-section" onclick="toggleDetail('falsePositives1')">
+                    Falsos Positivos 
+                    <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                        <span class="tooltip">Haz clic para desplegar más información</span>
+                    </span>
+                </div>
+                <div class="sub-detail" id="falsePositives1">
+                    Descripción de posibles falsos positivos para la Regla 1.
+                </div>
+
+                <div class="sub-section" onclick="toggleDetail('payloads1')">
+                    Payloads 
+                    <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                        <span class="tooltip">Haz clic para desplegar más información</span>
+                    </span>
+                </div>
+                <div class="sub-detail" id="payloads1">
+                    sudoedit -s /
+                </div>
+
+                <div class="sub-section" onclick="toggleDetail('importantLinks1')">
+                    Enlaces Importantes 
+                    <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                        <span class="tooltip">Haz clic para desplegar más información</span>
+                    </span>
+                </div>
+                <div class="sub-detail" id="importantLinks1">
+                    <ul>
+                        <li><a href="https://sysdig.com/blog/cve-2021-3156-sudo-falco/" target="_blank">How to detect sudo’s CVE-2021-3156 using Falco</a></li>
+                        <li><a href="https://enlace2.com" target="_blank">Enlace 2</a></li>
+                        <li><a href="https://enlace3.com" target="_blank">Enlace 3</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+        <!-- Rule 2 -->
+    <div class="rule">
+        <img src="assets/ngrok-connect.avif" alt="Imagen de Regla 2">
+        <div class="rule-content">
+            <div class="rule-summary" onclick="toggleDetail('rule2')">
+                Rule 2: Connect to ngrok service [Custom]
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="rule-detail" id="rule2">
+                <div class="sub-section" onclick="toggleDetail('desc2')">
+                    Description
+                    <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                        <span class="tooltip">Haz clic para desplegar más información</span>
+                    </span>
+                </div>
+                <div class="sub-detail" id="desc2">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. 
+                </div>
+
+                <div class="sub-section" onclick="toggleDetail('pertinencia2')">
+                    Relevancia 
+                    <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                        <span class="tooltip">Haz clic para desplegar más información</span>
+                    </span>
+                </div>
+                <div class="sub-detail" id="pertinencia2">
+                    Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta.
+                </div>
+
+                <div class="sub-section" onclick="toggleDetail('falsePositives2')">
+                    Falsos Positivos 
+                    <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                        <span class="tooltip">Haz clic para desplegar más información</span>
+                    </span>
+                </div>
+                <div class="sub-detail" id="falsePositives2">
+                    Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. Quisque volutpat condimentum velit.
+                </div>
+
+                <div class="sub-section" onclick="toggleDetail('payloads2')">
+                    Payloads 
+                    <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                        <span class="tooltip">Haz clic para desplegar más información</span>
+                    </span>
+                </div>
+                <div class="sub-detail" id="payloads2">
+                    Mauris massa. Vestibulum lacinia arcu eget nulla. 
+                </div>
+
+                <div class="sub-section" onclick="toggleDetail('importantLinks2')">
+                    Enlaces Importantes 
+                    <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                        <span class="tooltip">Haz clic para desplegar más información</span>
+                    </span>
+                </div>
+                <div class="sub-detail" id="importantLinks2">
+                    <ul>
+                        <li><a href="https://loremipsum.com" target="_blank">Lorem Ipsum Dolor Sit Amet</a></li>
+                        <li><a href="https://dolorsitamet.com" target="_blank">Dolor Sit Amet</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+        <!-- Rule 3 -->
+    <div class="rule">
+        <img src="assets/ngrok-configuration.webp" alt="Imagen de Regla 3">
+        <div class="rule-content">
+            <div class="rule-summary" onclick="toggleDetail('rule3')">
+                Rule 3: Ngrok service download/configuration/start [custom]
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="rule-detail" id="rule3">
+                <div class="sub-section" onclick="toggleDetail('desc3')">
+                    Description
+                    <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                        <span class="tooltip">Haz clic para desplegar más información</span>
+                    </span>
+                </div>
+                <div class="sub-detail" id="desc3">
+                    Detects the download, configuration, installation, and execution of Ngrok within a Kubernetes cluster. Ngrok is a tool that can expose local services to the Internet by creating secure tunnels.
+                </div>
+
+                <div class="sub-section" onclick="toggleDetail('pertinencia3')">
+                    Relevance 
+                    <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                        <span class="tooltip">Haz clic para desplegar más información</span>
+                    </span>
+                </div>
+                <div class="sub-detail" id="pertinencia3">
+                    Although it can be legitimately used for development and testing purposes, it can also be maliciously employed to exfiltrate data or create unauthorized access to internal services.
+                </div>
+
+                <div class="sub-section" onclick="toggleDetail('falsePositives3')">
+                    Falsos Positivos 
+                    <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                        <span class="tooltip">Haz clic para desplegar más información</span>
+                    </span>
+                </div>
+                <div class="sub-detail" id="falsePositives3">
+                    Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. Quisque volutpat condimentum velit.
+                </div>
+
+                <div class="sub-section" onclick="toggleDetail('payloads3')">
+                    Payloads 
+                    <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                        <span class="tooltip">Haz clic para desplegar más información</span>
+                    </span>
+                </div>
+                <div class="sub-detail" id="payloads3">
+                    Mauris massa. Vestibulum lacinia arcu eget nulla. 
+                </div>
+
+                <div class="sub-section" onclick="toggleDetail('importantLinks3')">
+                    Enlaces Importantes 
+                    <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                        <span class="tooltip">Haz clic para desplegar más información</span>
+                    </span>
+                </div>
+                <div class="sub-detail" id="importantLinks2">
+                    <ul>
+                        <li><a href="https://loremipsum.com" target="_blank">Lorem Ipsum Dolor Sit Amet</a></li>
+                        <li><a href="https://dolorsitamet.com" target="_blank">Dolor Sit Amet</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+ 
+
+        <!-- Rule 4 -->
+    <div class="rule">
+        <img src="assets/k8s-malicious-tools.webp" alt="Imagen de Regla 4">
+        <div class="rule-content">
+            <div class="rule-summary" onclick="toggleDetail('rule4')">
+                Rule 4: Kubernetes Malicious tools
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="rule-detail" id="rule4">
+                <div class="sub-section" onclick="toggleDetail('desc4')">
+                    Description 
+                    <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                        <span class="tooltip">Haz clic para desplegar más información</span>
+                    </span>
+                </div>
+                <div class="sub-detail" id="desc4">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. 
+                </div>
+
+                <div class="sub-section" onclick="toggleDetail('pertinencia4')">
+                    Relevance 
+                    <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                        <span class="tooltip">Haz clic para desplegar más información</span>
+                    </span>
+                </div>
+                <div class="sub-detail" id="pertinencia4">
+                    The detection of hacking tools specialized in Kubernetes, such as Kubeshark and Peirates, is critical for protecting the security of a cluster. These tools can be used to spy on network traffic, 
+                    compromise authentication, and exploit vulnerabilities within the Kubernetes environment, allowing an attacker to take control of the cluster or access sensitive information.
+                </div>
+
+                <div class="sub-section" onclick="toggleDetail('falsePositives4')">
+                    Falsos Positivos 
+                    <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                        <span class="tooltip">Haz clic para desplegar más información</span>
+                    </span>
+                </div>
+                <div class="sub-detail" id="falsePositives4">
+                    Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. Quisque volutpat condimentum velit.
+                </div>
+
+                <div class="sub-section" onclick="toggleDetail('payloads4')">
+                    Payloads 
+                    <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                        <span class="tooltip">Haz clic para desplegar más información</span>
+                    </span>
+                </div>
+                <div class="sub-detail" id="payloads4">
+                    Mauris massa. Vestibulum lacinia arcu eget nulla. 
+                </div>
+
+                <div class="sub-section" onclick="toggleDetail('importantLinks4')">
+                    Enlaces Importantes 
+                    <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                        <span class="tooltip">Haz clic para desplegar más información</span>
+                    </span>
+                </div>
+                <div class="sub-detail" id="importantLinks4">
+                    <ul>
+                        <li><a href="https://is.muni.cz/th/r82kv/final_thesis.pdf" target="_blank">Lorem Ipsum Dolor Sit Amet</a></li>
+                        <li><a href="https://dolorsitamet.com" target="_blank">Dolor Sit Amet</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rule 5-->
+    <div class="rule">
+        <img src="assets/sql-injection-tools.png" alt="Imagen de Regla 5">
+        <div class="rule-content">
+            <div class="rule-summary" onclick="toggleDetail('rule5')">
+                Rule 5: SQL injection tools detected in Container [custom]
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="rule-detail" id="rule5">
+                <div class="sub-section" onclick="toggleDetail('desc5')">
+                    Description 
+                    <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                        <span class="tooltip">Haz clic para desplegar más información</span>
+                    </span>
+                </div>
+                <div class="sub-detail" id="desc5">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. 
+                </div>
+
+                <div class="sub-section" onclick="toggleDetail('pertinencia5')">
+                    Relevance 
+                    <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                        <span class="tooltip">Haz clic para desplegar más información</span>
+                    </span>
+                </div>
+                <div class="sub-detail" id="pertinencia5">
+                    Necesitarás acceso directo al nodo de Kubernetes. Debes tener privilegios de root en la máquina donde se ejecuta el nodo. 
+                    Fuzzing puede ser intensivo en recursos y potencialmente desestabilizar el sistema. En un entorno de Kubernetes, esto podría afectar no solo al nodo donde se ejecuta el fuzzing, sino también a los pods y servicios que se ejecutan en ese nodo.
+                    Es posible que necesites modificar la configuración del nodo para permitir el fuzzing.
+                    La habilitación de capacidades de depuración en el kernel o incluso la instalación de herramientas adicionales en el nodo.
+                </div>
+
+                <div class="sub-section" onclick="toggleDetail('falsePositives5')">
+                    Falsos Positivos 
+                    <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                        <span class="tooltip">Haz clic para desplegar más información</span>
+                    </span>
+                </div>
+                <div class="sub-detail" id="falsePositives5">
+                    Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. Quisque volutpat condimentum velit.
+                </div>
+
+                <div class="sub-section" onclick="toggleDetail('payloads5')">
+                    Payloads 
+                    <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                        <span class="tooltip">Haz clic para desplegar más información</span>
+                    </span>
+                </div>
+                <div class="sub-detail" id="payloads5">
+                    Mauris massa. Vestibulum lacinia arcu eget nulla. 
+                </div>
+
+                <div class="sub-section" onclick="toggleDetail('importantLinks5')">
+                    Enlaces Importantes 
+                    <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                        <span class="tooltip">Haz clic para desplegar más información</span>
+                    </span>
+                </div>
+                <div class="sub-detail" id="importantLinks5">
+                    <ul>
+                        <li><a href="https://loremipsum.com" target="_blank">Lorem Ipsum Dolor Sit Amet</a></li>
+                        <li><a href="https://dolorsitamet.com" target="_blank">Dolor Sit Amet</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Rule 6-->
+    <div class="rule">
+        <img src="assets/sql-injection-patterns.png" alt="Imagen de Regla 6">
+        <div class="rule-content">
+            <div class="rule-summary" onclick="toggleDetail('rule6')">
+                Rule 6: SQL injection tools detected in Container [custom]
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="rule-detail" id="rule6">
+                <div class="sub-section" onclick="toggleDetail('desc6')">
+                    Description 
+                    <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                        <span class="tooltip">Haz clic para desplegar más información</span>
+                    </span>
+                </div>
+                <div class="sub-detail" id="desc6">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. 
+                </div>
+
+                <div class="sub-section" onclick="toggleDetail('pertinencia6')">
+                    Relevance 
+                    <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                        <span class="tooltip">Haz clic para desplegar más información</span>
+                    </span>
+                </div>
+                <div class="sub-detail" id="pertinencia6">
+                    Necesitarás acceso directo al nodo de Kubernetes. Debes tener privilegios de root en la máquina donde se ejecuta el nodo. 
+                    Fuzzing puede ser intensivo en recursos y potencialmente desestabilizar el sistema. En un entorno de Kubernetes, esto podría afectar no solo al nodo donde se ejecuta el fuzzing, sino también a los pods y servicios que se ejecutan en ese nodo.
+                    Es posible que necesites modificar la configuración del nodo para permitir el fuzzing.
+                    La habilitación de capacidades de depuración en el kernel o incluso la instalación de herramientas adicionales en el nodo.
+                </div>
+
+                <div class="sub-section" onclick="toggleDetail('falsePositives6')">
+                    Falsos Positivos 
+                    <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                        <span class="tooltip">Haz clic para desplegar más información</span>
+                    </span>
+                </div>
+                <div class="sub-detail" id="falsePositives5">
+                    Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. Quisque volutpat condimentum velit.
+                </div>
+
+                <div class="sub-section" onclick="toggleDetail('payloads6')">
+                    Payloads 
+                    <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                        <span class="tooltip">Haz clic para desplegar más información</span>
+                    </span>
+                </div>
+                <div class="sub-detail" id="payloads6">
+                    Mauris massa. Vestibulum lacinia arcu eget nulla. 
+                </div>
+
+                <div class="sub-section" onclick="toggleDetail('importantLinks6')">
+                    Enlaces Importantes 
+                    <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                        <span class="tooltip">Haz clic para desplegar más información</span>
+                    </span>
+                </div>
+                <div class="sub-detail" id="importantLinks6">
+                    <ul>
+                        <li><a href="https://loremipsum.com" target="_blank">Lorem Ipsum Dolor Sit Amet</a></li>
+                        <li><a href="https://dolorsitamet.com" target="_blank">Dolor Sit Amet</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<!-- Rule 7-->
+<div class="rule">
+    <img src="assets/scanner-automated-tool.png" alt="Imagen de Regla 7">
+    <div class="rule-content">
+        <div class="rule-summary" onclick="toggleDetail('rule7')">
+            Rule 7: Scanner or Automated Tools launched in Container [custom]
+            <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                <span class="tooltip">Haz clic para desplegar más información</span>
+            </span>
+        </div>
+        <div class="rule-detail" id="rule7">
+            <div class="sub-section" onclick="toggleDetail('desc7')">
+                Description 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="desc7">
+                Esta regla detecta anomalías en el tráfico de red que podrían indicar un posible ataque o una actividad sospechosa.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('pertinencia7')">
+                Relevance 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="pertinencia7">
+                El monitoreo continuo del tráfico de red es crucial para identificar patrones inusuales que puedan indicar intentos de intrusión.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('falsePositives7')">
+                Falsos Positivos 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="falsePositives7">
+                Algunos picos inusuales en el tráfico de red pueden ser causados por procesos legítimos.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('payloads7')">
+                Payloads 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="payloads7">
+                Detalles específicos de los paquetes de red capturados que se consideran sospechosos.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('importantLinks7')">
+                Enlaces Importantes 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="importantLinks7">
+                <ul>
+                    <li><a href="https://networkmonitoring.com" target="_blank">Network Monitoring</a></li>
+                    <li><a href="https://anomalydetection.com" target="_blank">Anomaly Detection</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Rule 8-->
+<div class="rule">
+    <img src="assets/connect-VPN-Tunnel-Proxy.jpg" alt="Imagen de Regla 8">
+    <div class="rule-content">
+        <div class="rule-summary" onclick="toggleDetail('rule8')">
+            Rule 8: Connect to VPN/Tunnel or Proxy Server [custom]
+            <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                <span class="tooltip">Haz clic para desplegar más información</span>
+            </span>
+        </div>
+        <div class="rule-detail" id="rule8">
+            <div class="sub-section" onclick="toggleDetail('desc8')">
+                Description 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="desc8">
+                Esta regla monitorea cambios inesperados en archivos críticos del sistema.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('pertinencia8')">
+                Relevance 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="pertinencia8">
+                La integridad de los archivos es esencial para garantizar que el sistema no haya sido comprometido.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('falsePositives8')">
+                Falsos Positivos 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="falsePositives8">
+                Algunos cambios en los archivos pueden ser realizados por procesos de actualización legítimos.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('payloads8')">
+                Payloads 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="payloads8">
+                Lista de archivos específicos que han sido modificados y el detalle de los cambios.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('importantLinks8')">
+                Enlaces Importantes 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="importantLinks8">
+                <ul>
+                    <li><a href="https://fileintegrity.com" target="_blank">File Integrity Monitoring</a></li>
+                    <li><a href="https://securitybreach.com" target="_blank">Security Breach</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Rule 9-->
+<div class="rule">
+    <img src="assets/kubectl-suspicious-commands.jpg" alt="Imagen de Regla 9">
+    <div class="rule-content">
+        <div class="rule-summary" onclick="toggleDetail('rule9')">
+            Rule 9: Kubectl Suspicious Commands launched in Container [custom]
+            <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                <span class="tooltip">Haz clic para desplegar más información</span>
+            </span>
+        </div>
+        <div class="rule-detail" id="rule9">
+            <div class="sub-section" onclick="toggleDetail('desc9')">
+                Description 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="desc9">
+                Se ha detectado un intento de elevar privilegios, lo cual puede ser un signo de un ataque en curso.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('pertinencia9')">
+                Relevance 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="pertinencia9">
+                La escalación de privilegios permite a un atacante obtener un control mayor sobre el sistema, aumentando el riesgo de daños significativos.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('falsePositives9')">
+                Falsos Positivos 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="falsePositives9">
+                Algunos scripts o procesos automatizados pueden elevar privilegios por diseño, sin intención maliciosa.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('payloads9')">
+                Payloads 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="payloads9">
+                Comandos específicos o técnicas utilizadas para intentar la escalación de privilegios.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('importantLinks9')">
+                Enlaces Importantes 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="importantLinks9">
+                <ul>
+                    <li><a href="https://privilegeescalation.com" target="_blank">Privilege Escalation Techniques</a></li>
+                    <li><a href="https://cybersecurity.com" target="_blank">Cybersecurity Awareness</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Rule 10-->
+<div class="rule">
+    <img src="assets/sensitive-data-exposure.png" alt="Imagen de Regla 10">
+    <div class="rule-content">
+        <div class="rule-summary" onclick="toggleDetail('rule10')">
+            Rule 10: Obsec [custom]
+            <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                <span class="tooltip">Haz clic para desplegar más información</span>
+            </span>
+        </div>
+        <div class="rule-detail" id="rule10">
+            <div class="sub-section" onclick="toggleDetail('desc10')">
+                Description 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="desc10">
+                Esta regla detecta la exposición de datos sensibles, como números de tarjetas de crédito o credenciales de acceso.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('pertinencia10')">
+                Relevance 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="pertinencia10">
+                La exposición de datos sensibles puede llevar a fraudes, pérdidas económicas y daño a la reputación.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('falsePositives10')">
+                Falsos Positivos 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="falsePositives10">
+                Algunos datos sensibles pueden ser parte de procesos de prueba y no representar una amenaza real.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('payloads10')">
+                Payloads 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="payloads10">
+                Detalles de los datos específicos expuestos y su posible impacto.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('importantLinks10')">
+                Enlaces Importantes 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="importantLinks10">
+                <ul>
+                    <li><a href="https://datasecurity.com" target="_blank">Data Security Best Practices</a></li>
+                    <li><a href="https://compliance.com" target="_blank">Compliance Regulations</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Rule 11-->
+<div class="rule">
+    <img src="assets/loadtesting-benchmarking-utility.png" alt="Imagen de Regla 11">
+    <div class="rule-content">
+        <div class="rule-summary" onclick="toggleDetail('rule11')">
+            Rule 11: Load Tester/Benchmarking Utility detected inside a Container [custom]
+            <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                <span class="tooltip">Haz clic para desplegar más información</span>
+            </span>
+        </div>
+        <div class="rule-detail" id="rule11">
+            <div class="sub-section" onclick="toggleDetail('desc11')">
+                Description 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="desc11">
+                Se ha detectado la presencia de malware en el sistema. Esto puede incluir virus, troyanos o spyware.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('pertinencia11')">
+                Relevance 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="pertinencia11">
+                El malware puede causar daños significativos al sistema, incluyendo la pérdida de datos y la interrupción de servicios.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('falsePositives11')">
+                Falsos Positivos 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="falsePositives11">
+                Algunos programas legítimos pueden ser identificados erróneamente como malware.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('payloads11')">
+                Payloads 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="payloads11">
+                Archivos específicos, procesos o comportamientos que indican la presencia de malware.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('importantLinks11')">
+                Enlaces Importantes 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="importantLinks11">
+                <ul>
+                    <li><a href="https://github.com/aliesbelik/load-testing-toolkit" target="_blank">Load testing toolkit</a></li>
+                    <li><a href="https://securitytools.com" target="_blank">Security Tools</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Rule 12-->
+<div class="rule">
+    <img src="assets/exploitation-attempt.png" alt="Imagen de Regla 12">
+    <div class="rule-content">
+        <div class="rule-summary" onclick="toggleDetail('rule12')">
+            Rule 12: Exploitation Attempt detected inside a Container [custom]
+            <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                <span class="tooltip">Haz clic para desplegar más información</span>
+            </span>
+        </div>
+        <div class="rule-detail" id="rule12">
+            <div class="sub-section" onclick="toggleDetail('desc12')">
+                Description 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="desc12">
+                Esta regla identifica posibles ataques de phishing, donde los atacantes intentan engañar a los usuarios para que revelen información sensible.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('pertinencia12')">
+                Relevance 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="pertinencia12">
+                Los ataques de phishing son una de las formas más comunes de comprometer la seguridad de la información.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('falsePositives12')">
+                Falsos Positivos 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="falsePositives12">
+                Correos electrónicos legítimos con lenguaje inusual o enlaces externos pueden ser marcados como phishing.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('payloads12')">
+                Payloads 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="payloads12">
+                Detalles del contenido del correo electrónico, URLs sospechosas y otros indicadores de phishing.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('importantLinks12')">
+                Enlaces Importantes 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="importantLinks12">
+                <ul>
+                    <li><a href="https://antiphishing.com" target="_blank">Anti-Phishing Solutions</a></li>
+                    <li><a href="https://secureemail.com" target="_blank">Secure Email Practices</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Rule 13-->
+<div class="rule">
+    <img src="assets/brute-force.png" alt="Imagen de Regla 13">
+    <div class="rule-content">
+        <div class="rule-summary" onclick="toggleDetail('rule13')">
+            Rule 13: Privilege Escalation behavior detected based Bad Permissions [custom]
+            <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                <span class="tooltip">Haz clic para desplegar más información</span>
+            </span>
+        </div>
+        <div class="rule-detail" id="rule13">
+            <div class="sub-section" onclick="toggleDetail('desc13')">
+                Description 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="desc13">
+                Este tipo de ataque intenta acceder a una cuenta probando varias combinaciones de contraseñas hasta encontrar la correcta.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('pertinencia13')">
+                Relevance 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="pertinencia13">
+                Un ataque exitoso puede comprometer la seguridad de la cuenta y permitir acceso no autorizado.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('falsePositives13')">
+                Falsos Positivos 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="falsePositives13">
+                Múltiples intentos fallidos por parte de un usuario legítimo pueden ser detectados como un ataque de fuerza bruta.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('payloads13')">
+                Payloads 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="payloads13">
+                Información detallada sobre los intentos de acceso, incluyendo direcciones IP, timestamps y más.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('importantLinks13')">
+                Enlaces Importantes 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="importantLinks13">
+                <ul>
+                    <li><a href="https://secureauth.com" target="_blank">Authentication Security</a></li>
+                    <li><a href="https://passwordpolicy.com" target="_blank">Strong Password Policies</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Rule 14-->
+<div class="rule">
+    <img src="assets/privesc-suid.jpeg" alt="Imagen de Regla 14">
+    <div class="rule-content">
+        <div class="rule-summary" onclick="toggleDetail('rule14')">
+            Rule 14: Privilege Escalation Behavior based SUID/GUID detected [custom]
+            <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                <span class="tooltip">Haz clic para desplegar más información</span>
+            </span>
+        </div>
+        <div class="rule-detail" id="rule14">
+            <div class="sub-section" onclick="toggleDetail('desc14')">
+                Description 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="desc14">
+                Un ataque SQL Injection ocurre cuando un atacante inserta código SQL malicioso en una consulta, comprometiendo la base de datos.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('pertinencia14')">
+                Relevance 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="pertinencia14">
+                Estos ataques pueden resultar en acceso no autorizado a datos sensibles o la destrucción de información en la base de datos.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('falsePositives14')">
+                Falsos Positivos 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="falsePositives14">
+                Consultas mal formadas por un usuario legítimo pueden ser detectadas erróneamente como ataques SQL Injection.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('payloads14')">
+                Payloads 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="payloads14">
+                Detalles sobre los comandos SQL insertados, incluyendo la consulta completa y los datos de entrada.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('importantLinks14')">
+                Enlaces Importantes 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="importantLinks14">
+                <ul>
+                    <li><a href="https://owasp.org/www-project-top-ten/" target="_blank">OWASP Top Ten</a></li>
+                    <li><a href="https://sqlinjection.net" target="_blank">SQL Injection Prevention</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Rule 15-->
+<div class="rule">
+    <img src="assets/rule15.png" alt="Imagen de Regla 15">
+    <div class="rule-content">
+        <div class="rule-summary" onclick="toggleDetail('rule15')">
+            Rule 15: Cross-Site Scripting (XSS) [custom]
+            <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                <span class="tooltip">Haz clic para desplegar más información</span>
+            </span>
+        </div>
+        <div class="rule-detail" id="rule15">
+            <div class="sub-section" onclick="toggleDetail('desc15')">
+                Description 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="desc15">
+                Un ataque XSS permite a un atacante inyectar scripts maliciosos en páginas web vistas por otros usuarios.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('pertinencia15')">
+                Relevance 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="pertinencia15">
+                Puede permitir el robo de información de los usuarios, incluyendo credenciales, y la manipulación de contenido.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('falsePositives15')">
+                Falsos Positivos 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="falsePositives15">
+                Un input legítimo que incluye caracteres especiales podría ser erróneamente identificado como un ataque XSS.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('payloads15')">
+                Payloads 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="payloads15">
+                Scripts inyectados, incluyendo detalles sobre las variables afectadas y las páginas comprometidas.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('importantLinks15')">
+                Enlaces Importantes 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="importantLinks15">
+                <ul>
+                    <li><a href="https://www.cgisecurity.com/xss-faq.html" target="_blank">XSS FAQ</a></li>
+                    <li><a href="https://owasp.org/www-project-xss-filter-evasion-cheatsheet/" target="_blank">XSS Filter Evasion</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Rule 16-->
+<div class="rule">
+    <img src="assets/rule16.png" alt="Imagen de Regla 16">
+    <div class="rule-content">
+        <div class="rule-summary" onclick="toggleDetail('rule16')">
+            Rule 16: Denial of Service (DoS) [custom]
+            <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                <span class="tooltip">Haz clic para desplegar más información</span>
+            </span>
+        </div>
+        <div class="rule-detail" id="rule16">
+            <div class="sub-section" onclick="toggleDetail('desc16')">
+                Description 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="desc16">
+                Un ataque DoS intenta hacer que un servicio sea inaccesible al abrumarlo con tráfico o peticiones.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('pertinencia16')">
+                Relevance 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="pertinencia16">
+                Un ataque exitoso puede resultar en la interrupción completa de un servicio crítico, afectando la disponibilidad.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('falsePositives16')">
+                Falsos Positivos 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="falsePositives16">
+                Un alto volumen de tráfico legítimo podría ser interpretado erróneamente como un ataque DoS.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('payloads16')">
+                Payloads 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="payloads16">
+                Información sobre el tráfico anómalo, incluyendo IPs origen y patrones de petición.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('importantLinks16')">
+                Enlaces Importantes 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="importantLinks16">
+                <ul>
+                    <li><a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/" target="_blank">What is a DDoS Attack?</a></li>
+                    <li><a href="https://owasp.org/www-community/attacks/Denial_of_Service" target="_blank">OWASP DoS</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Rule 17-->
+<div class="rule">
+    <img src="assets/rule17.png" alt="Imagen de Regla 17">
+    <div class="rule-content">
+        <div class="rule-summary" onclick="toggleDetail('rule17')">
+            Rule 17: Remote File Inclusion (RFI) [custom]
+            <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                <span class="tooltip">Haz clic para desplegar más información</span>
+            </span>
+        </div>
+        <div class="rule-detail" id="rule17">
+            <div class="sub-section" onclick="toggleDetail('desc17')">
+                Description 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="desc17">
+                Un ataque RFI permite a un atacante incluir archivos desde un servidor remoto en la aplicación vulnerable.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('pertinencia17')">
+                Relevance 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="pertinencia17">
+                Puede resultar en la ejecución de código arbitrario en el servidor, comprometiendo su seguridad.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('falsePositives17')">
+                Falsos Positivos 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="falsePositives17">
+                Inputs válidos que incluyen URLs pueden ser interpretados erróneamente como un ataque RFI.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('payloads17')">
+                Payloads 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="payloads17">
+                Detalles sobre los archivos incluidos, incluyendo las rutas y el código ejecutado.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('importantLinks17')">
+                Enlaces Importantes 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="importantLinks17">
+                <ul>
+                    <li><a href="https://www.acunetix.com/websitesecurity/remote-file-inclusion/" target="_blank">RFI Security Guide</a></li>
+                    <li><a href="https://owasp.org/www-community/attacks/Remote_File_Inclusion" target="_blank">OWASP RFI</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Rule 18-->
+<div class="rule">
+    <img src="assets/rule18.png" alt="Imagen de Regla 18">
+    <div class="rule-content">
+        <div class="rule-summary" onclick="toggleDetail('rule18')">
+            Rule 18: Local File Inclusion (LFI) [custom]
+            <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                <span class="tooltip">Haz clic para desplegar más información</span>
+            </span>
+        </div>
+        <div class="rule-detail" id="rule18">
+            <div class="sub-section" onclick="toggleDetail('desc18')">
+                Description 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="desc18">
+                Un ataque LFI permite a un atacante incluir archivos locales en la aplicación vulnerable, accediendo a contenido confidencial.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('pertinencia18')">
+                Relevance 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="pertinencia18">
+                Puede permitir la lectura de archivos sensibles en el servidor, comprometiendo la seguridad.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('falsePositives18')">
+                Falsos Positivos 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="falsePositives18">
+                Inputs válidos que hacen referencia a archivos locales pueden ser interpretados erróneamente como un ataque LFI.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('payloads18')">
+                Payloads 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="payloads18">
+                Información sobre los archivos accedidos, incluyendo sus ubicaciones y contenido.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('importantLinks18')">
+                Enlaces Importantes 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="importantLinks18">
+                <ul>
+                    <li><a href="https://owasp.org/www-community/attacks/Local_File_Inclusion" target="_blank">OWASP LFI</a></li>
+                    <li><a href="https://www.acunetix.com/websitesecurity/local-file-inclusion/" target="_blank">LFI Guide</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Rule 19-->
+<div class="rule">
+    <img src="assets/rule19.png" alt="Imagen de Regla 19">
+    <div class="rule-content">
+        <div class="rule-summary" onclick="toggleDetail('rule19')">
+            Rule 19: Insecure Deserialization [custom]
+            <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                <span class="tooltip">Haz clic para desplegar más información</span>
+            </span>
+        </div>
+        <div class="rule-detail" id="rule19">
+            <div class="sub-section" onclick="toggleDetail('desc19')">
+                Description 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="desc19">
+                La deserialización insegura ocurre cuando datos no confiables son deserializados, permitiendo a un atacante manipular el objeto resultante.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('pertinencia19')">
+                Relevance 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="pertinencia19">
+                Puede llevar a la ejecución de código remoto, violaciones de acceso, o denegación de servicio.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('falsePositives19')">
+                Falsos Positivos 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="falsePositives19">
+                Un flujo de datos legítimo que involucra objetos deserializados puede ser interpretado erróneamente como un ataque.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('payloads19')">
+                Payloads 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="payloads19">
+                Ejemplos de datos que podrían ser deserializados y las consecuencias resultantes.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('importantLinks19')">
+                Enlaces Importantes 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="importantLinks19">
+                <ul>
+                    <li><a href="https://owasp.org/www-project-cheat-sheet-series/cheatsheets/Deserialization_Cheat_Sheet.html" target="_blank">Deserialization Cheat Sheet</a></li>
+                    <li><a href="https://www.owasp.org/index.php/Top_10-2017_A8-Insecure_Deserialization" target="_blank">OWASP Top 10 2017 A8</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Rule 20-->
+<div class="rule">
+    <img src="assets/rule20.png" alt="Imagen de Regla 20">
+    <div class="rule-content">
+        <div class="rule-summary" onclick="toggleDetail('rule20')">
+            Rule 20: XML External Entities (XXE) [custom]
+            <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                <span class="tooltip">Haz clic para desplegar más información</span>
+            </span>
+        </div>
+        <div class="rule-detail" id="rule20">
+            <div class="sub-section" onclick="toggleDetail('desc20')">
+                Description 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="desc20">
+                Un ataque XXE ocurre cuando una entidad externa es procesada en un documento XML, exponiendo información confidencial o ejecutando código.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('pertinencia20')">
+                Relevance 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="pertinencia20">
+                Puede permitir a un atacante acceder a archivos del sistema, realizar consultas remotas, o ejecutar código arbitrario.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('falsePositives20')">
+                Falsos Positivos 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="falsePositives20">
+                Algunas configuraciones válidas de entidades externas podrían ser malinterpretadas como un ataque XXE.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('payloads20')">
+                Payloads 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="payloads20">
+                Ejemplos de entidades externas y las potenciales vulnerabilidades que explotan.
+            </div>
+
+            <div class="sub-section" onclick="toggleDetail('importantLinks20')">
+                Enlaces Importantes 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="importantLinks20">
+                <ul>
+                    <li><a href="https://owasp.org/www-project-cheat-sheet-series/cheatsheets/XML_External_Entity_Prevention_Cheat_Sheet.html" target="_blank">XXE Prevention Cheat Sheet</a></li>
+                    <li><a href="https://owasp.org/www-community/vulnerabilities/XML_External_Entity_(XXE)_Processing" target="_blank">OWASP XXE</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</body>
+</html>
