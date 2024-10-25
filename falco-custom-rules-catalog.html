@@ -975,10 +975,10 @@
 
     <!-- Rule 17 -->
     <div class="rule">
-        <img src="assets/resource-abuse.png" alt="Imagen de Regla 17">
+        <img src="assets/bad-curl.jpg" alt="Imagen de Regla 17">
         <div class="rule-content">
             <div class="rule-summary" onclick="toggleDetail('rule17')">
-                Rule 17: Resource abuse [Custom]
+                Rule 17: Suspicious Curl Activity [custom]
                 <span class="info-icon" onclick="event.stopPropagation()">ℹ
                     <span class="tooltip">Haz clic para desplegar más información</span>
                 </span>
@@ -991,7 +991,7 @@
                     </span>
                 </div>
                 <div class="sub-detail" id="desc17">
-                    Detects patterns of resource abuse, such as excessive resource requests or usage within the cluster.
+                    Detects potentially dangerous curl commands in containers, focusing on command injection, malicious User-Agent headers, SQL injection patterns, and suspicious use of proxies or tracing options.
                 </div>
 
                 <div class="sub-section" onclick="toggleSubDetail('pertinencia17')">
@@ -1001,7 +1001,7 @@
                     </span>
                 </div>
                 <div class="sub-detail" id="pertinencia17">
-                    Resource abuse can lead to performance degradation and affect the availability of services within the cluster.
+                    curl is often used by attackers for data exfiltration, remote command execution, and probing network defenses. In Kubernetes environments, where containers communicate over a shared network, such actions can facilitate lateral movement, privilege escalation, or access to sensitive data.
                 </div>
 
                 <div class="sub-section">
@@ -1011,15 +1011,17 @@
                     <strong>Rule status:</strong>
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" 
-                             aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;">
-                            70%
+                             aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">
+                            80%
                         </div>
                     </div>
                 </div>
                 <div class="sub-section">
                     <strong>Tags:</strong>
-                    <span class="badge bg-secondary me-2">mitre_resource_management</span>
-                    <span class="badge bg-secondary">resource_abuse</span>
+                    <span class="badge bg-secondary me-2">mitre_execution</span>
+                    <span class="badge bg-secondary">container</span>
+                    <span class="badge bg-secondary me-2">host</span>
+                    <span class="badge bg-secondary me-2">process</span>
                 </div>
             </div>
         </div>
@@ -1027,10 +1029,10 @@
 
     <!-- Rule 18 -->
     <div class="rule">
-        <img src="assets/cluster-exploitation.png" alt="Imagen de Regla 18">
+        <img src="assets/container-escape-behaviors.jpg" alt="Imagen de Regla 18">
         <div class="rule-content">
             <div class="rule-summary" onclick="toggleDetail('rule18')">
-                Rule 18: Cluster exploitation [Custom]
+                Rule 18: Container escapes behaviors detected inside a container [custom]
                 <span class="info-icon" onclick="event.stopPropagation()">ℹ
                     <span class="tooltip">Haz clic para desplegar más información</span>
                 </span>
@@ -1043,7 +1045,7 @@
                     </span>
                 </div>
                 <div class="sub-detail" id="desc18">
-                    Detects attempts to exploit vulnerabilities in the Kubernetes cluster for unauthorized actions.
+                    Detects enumeration and execution attempts related to container escape tools inside a container.
                 </div>
 
                 <div class="sub-section" onclick="toggleSubDetail('pertinencia18')">
@@ -1053,7 +1055,7 @@
                     </span>
                 </div>
                 <div class="sub-detail" id="pertinencia18">
-                    Exploitation attempts can severely compromise the security and stability of the entire cluster.
+                    It helps detect potential container escape attempts by monitoring the execution of known tools and scripts commonly used in escape techniques, providing an early warning of malicious activity.
                 </div>
 
                 <div class="sub-section">
@@ -1063,15 +1065,18 @@
                     <strong>Rule status:</strong>
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" 
-                             aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;">
-                            75%
+                             aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 85%;">
+                            85%
                         </div>
                     </div>
                 </div>
                 <div class="sub-section">
                     <strong>Tags:</strong>
-                    <span class="badge bg-secondary me-2">mitre_exploitation</span>
-                    <span class="badge bg-secondary">cluster_security</span>
+                    <span class="badge bg-secondary me-2">mitre_privilege_escalation</span>
+                    <span class="badge bg-secondary me-2">mitre_discovery</span>
+                    <span class="badge bg-secondary">container</span>
+                    <span class="badge bg-secondary me-2">host</span>
+                    <span class="badge bg-secondary me-2">process</span>
                 </div>
             </div>
         </div>
