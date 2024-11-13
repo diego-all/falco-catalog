@@ -808,8 +808,8 @@
                     <strong>Rule status:</strong>
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" 
-                             aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">
-                            80%
+                             aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">
+                            90%
                         </div>
                     </div>
                 </div>
@@ -841,7 +841,7 @@
                     </span>
                 </div>
                 <div class="sub-detail" id="desc14">
-                    Detects violations of defined network policies within the Kubernetes cluster.
+                    Detects potential privilege escalation attempts by identifying processes that search for files or directories with special permissions, such as SUID/SGID or sticky bits, which could grant unauthorized access within containerized environments..
                 </div>
 
                 <div class="sub-section" onclick="toggleSubDetail('pertinencia14')">
@@ -851,7 +851,8 @@
                     </span>
                 </div>
                 <div class="sub-detail" id="pertinencia14">
-                    Network policy violations can lead to unauthorized access and data exposure, threatening cluster security.
+                    
+This rule helps detect privilege escalation attempts within containerized environments by monitoring for processes that search for files or directories with SUID/SGID or sticky bit permissions, often targeted for unauthorized privilege gain. In Kubernetes-based container systems, these detections are important for maintaining security boundaries, as misused SUID/SGID files can allow elevated access, posing a risk to container isolation and overall cluster security.
                 </div>
 
                 <div class="sub-section">
@@ -861,8 +862,8 @@
                     <strong>Rule status:</strong>
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" 
-                             aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%;">
-                            85%
+                             aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">
+                            90%
                         </div>
                     </div>
                 </div>
@@ -894,7 +895,7 @@
                     </span>
                 </div>
                 <div class="sub-detail" id="desc15">
-                    Detects instances where sensitive secrets are exposed in logs or outputs.
+                    Detects the use of common privilege escalation tools and scripts often employed for vulnerability enumeration or exploiting misconfigurations. This rule identifies command-line patterns associated with tools like LinPEAS, Linux Priv Checker, and other scripts typically used to escalate privileges within a containerized environment. The detection of these tools indicates potential attempts to exploit system vulnerabilities or misconfigurations to gain elevated access.
                 </div>
 
                 <div class="sub-section" onclick="toggleSubDetail('pertinencia15')">
@@ -904,7 +905,7 @@
                     </span>
                 </div>
                 <div class="sub-detail" id="pertinencia15">
-                    Exposure of secrets can lead to significant security breaches and unauthorized access to sensitive data.
+                    Detecting known tools and scripts associated with privilege escalation or vulnerability enumeration helps reveal unauthorized activities early, allowing for prompt intervention before a security breach occurs. This detection layer strengthens container security by identifying specific exploitation methods and tools, supporting proactive measures against privilege escalation threats.
                 </div>
 
                 <div class="sub-section">
