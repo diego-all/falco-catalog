@@ -1131,14 +1131,16 @@ This rule helps detect privilege escalation attempts within containerized enviro
                     <strong>Rule status:</strong>
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" 
-                             aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">
-                            80%
+                             aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">
+                            90%
                         </div>
                     </div>
                 </div>
                 <div class="sub-section">
                     <strong>Tags:</strong>
-                    <span class="badge bg-secondary me-2">mitre_suspicious_activity</span>
+                    <span class="badge bg-secondary me-2">mitre_privilege_escalation</span>
+                    <span class="badge bg-secondary me-2">mitre_lateral_movement</span>
+                    <span class="badge bg-secondary me-2">mitre_execution</span>
                     <span class="badge bg-secondary">container</span>
                     <span class="badge bg-secondary me-2">host</span>
                     <span class="badge bg-secondary me-2">process</span>
@@ -1192,8 +1194,8 @@ This rule helps detect privilege escalation attempts within containerized enviro
                 </div>
                 <div class="sub-section">
                     <strong>Tags:</strong>
-                    <span class="badge bg-secondary me-2">mitre_configuration</span>
-                    <span class="badge bg-secondary">vulnerability_management</span>
+                    <span class="badge bg-secondary me-2">mitre_privilege_escalation</span>
+                    <span class="badge bg-secondary">mitre_defense_evasion</span>
                     <span class="badge bg-secondary">container</span>
                     <span class="badge bg-secondary me-2">host</span>
                     <span class="badge bg-secondary me-2">process</span>
@@ -1222,7 +1224,7 @@ This rule helps detect privilege escalation attempts within containerized enviro
                 </span>
             </div>
             <div class="sub-detail" id="desc26">
-                Detects attempts to manipulate environment variables that could lead to privilege escalation within container environments.
+                Detects the execution of web scanner tools like Burp Suite and ZAP inside a container, which could indicate security testing or malicious activity. This rule triggers on specific process commands and related files associated with these tools.
             </div>
 
             <div class="sub-section" onclick="toggleSubDetail('pertinencia26')">
@@ -1232,7 +1234,7 @@ This rule helps detect privilege escalation attempts within containerized enviro
                 </span>
             </div>
             <div class="sub-detail" id="pertinencia26">
-                This rule aids in detecting unauthorized web scanning activities that may involve malicious actions or reconnaissance by attackers, helping to prevent potential security breaches and safeguard the security of containerized applications.
+                Detecting web scanner processes like Burp Suite and ZAP inside containers can help identify potential security risks, such as unauthorized scanning or vulnerability exploitation attempts. In a Kubernetes-based environment, these tools are often used for reconnaissance or privilege escalation, making it important to monitor their usage to prevent malicious activities.
             </div>
 
             <div class="sub-section">
@@ -1249,8 +1251,9 @@ This rule helps detect privilege escalation attempts within containerized enviro
             </div>
             <div class="sub-section">
                 <strong>Tags:</strong>
+                <span class="badge bg-secondary me-2">mitre_discovery</span>
+                <span class="badge bg-secondary">mitre_execution</span>
                 <span class="badge bg-secondary me-2">mitre_reconnaissance</span>
-                <span class="badge bg-secondary">container</span>
                 <span class="badge bg-secondary me-2">host</span>
                 <span class="badge bg-secondary me-2">process</span>
             </div>
@@ -1340,7 +1343,7 @@ This rule helps detect privilege escalation attempts within containerized enviro
                 </span>
             </div>
             <div class="sub-detail" id="pertinencia28">
-                Helps to prevent attempts at network-based container escape, safeguarding the isolation between host and container networks.
+                Detecting fuzzing tools within Kubernetes containers helps identify potential misuse of web application fuzzers or binary fuzzers, which could indicate an attempt to exploit vulnerabilities in applications running inside the containers.
             </div>
 
             <div class="sub-section">
@@ -1350,8 +1353,8 @@ This rule helps detect privilege escalation attempts within containerized enviro
                 <strong>Rule status:</strong>
                 <div class="progress">
                     <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" 
-                         aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;">
-                        70%
+                         aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 85%;">
+                        85%
                     </div>
                 </div>
             </div>
