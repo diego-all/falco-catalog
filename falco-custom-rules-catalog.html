@@ -442,8 +442,8 @@
             </div>
             <div class="sub-section">
                 <strong>Tags:</strong>
-                <span class="badge bg-secondary me-2">mitre_exfiltration</span>
                 <span class="badge bg-secondary me-2">container</span>
+                <span class="badge me-2" style="background-color: #fd7e14; color: white;">mitre_exfiltration</span>
             </div>
         </div>
     </div>
@@ -495,10 +495,10 @@
             </div>
             <div class="sub-section">
                 <strong>Tags:</strong>
-                <span class="badge bg-secondary me-2">mitre_reconnaissance</span>
-                <span class="badge me-2" style="background-color: red; color: white;">mitre_reconnaissance</span>
-                <span class="badge bg-secondary me-2">mitre_discovery</span>
                 <span class="badge bg-secondary me-2">container</span>
+                <span class="badge me-2" style="background-color: #fd7e14; color: white;">mitre_reconnaissance</span>
+                <span class="badge bg-secondary me-2">mitre_discovery</span>
+
             </div>
         </div>
     </div>
@@ -522,7 +522,6 @@
                 </span>
             </div>
             <div class="sub-detail" id="desc8">
-                desc: >
   Detects attempts to establish connections to VPNs, tunnels, or proxy servers from within a container.
   Such connections may be used for evading network monitoring, concealing malicious activities, or facilitating unauthorized communication and lateral movement within the environment.
             </div>
@@ -551,9 +550,10 @@
             </div>
             <div class="sub-section">
                 <strong>Tags:</strong>
-                <span class="badge bg-secondary me-2">mitre_defense_evasion</span>
-                <span class="badge bg-secondary">mitre_command_and_control</span>
                 <span class="badge bg-secondary">container</span>
+                <span class="badge me-2" style="background-color: #fd7e14; color: white;">mitre_defense_evasion</span>
+                <span class="badge bg-secondary">mitre_command_and_control</span>
+                <span class="badge" style="background-color: #dc3545; color: white;">IRT_Alert</span>
             </div>
         </div>
     </div>
@@ -604,9 +604,11 @@
             </div>
             <div class="sub-section">
                 <strong>Tags:</strong>
-                <span class="badge bg-secondary me-2">mitre_discovery</span>
                 <span class="badge bg-secondary">malicious_tools</span>
                 <span class="badge bg-secondary">kubernetes</span>
+                <span class="badge me-2" style="background-color: #fd7e14; color: white;">mitre_discovery</span>
+                <span class="badge bg-secondary me-2"></span>
+                <span class="badge" style="background-color: #dc3545; color: white;">IRT_Alert</span>
             </div>
         </div>
     </div>
@@ -713,8 +715,9 @@
             </div>
             <div class="sub-section">
                 <strong>Tags:</strong>
-                <span class="badge bg-secondary me-2">mitre_impact</span>
                 <span class="badge bg-secondary">container</span>
+                <span class="badge me-2" style="background-color: #fd7e14; color: white;">mitre_impact</span>
+                <span class="badge" style="background-color: #dc3545; color: white;">IRT_Alert</span>
             </div>
         </div>
     </div>
@@ -765,8 +768,8 @@
             </div>
             <div class="sub-section">
                 <strong>Tags:</strong>
-                <span class="badge bg-secondary me-2">mitre_execution</span>
                 <span class="badge bg-secondary">container</span>
+                <span class="badge me-2" style="background-color: #fd7e14; color: white;">mitre_execution</span>
             </div>
         </div>
     </div>
@@ -818,9 +821,9 @@
                 </div>
                 <div class="sub-section">
                     <strong>Tags:</strong>
-                    <span class="badge bg-secondary me-2">mitre_privilege_escalation</span>
                     <span class="badge bg-secondary">container</span>
                     <span class="badge bg-secondary">host</span>
+                    <span class="badge me-2" style="background-color: #fd7e14; color: white;">mitre_privilege_escalation</span>
                 </div>
             </div>
         </div>
@@ -872,9 +875,9 @@ This rule helps detect privilege escalation attempts within containerized enviro
                 </div>
                 <div class="sub-section">
                     <strong>Tags:</strong>
-                    <span class="badge bg-secondary me-2">mitre_privilege_escalation</span>
                     <span class="badge bg-secondary">container</span>
                     <span class="badge bg-secondary">host</span>
+                    <span class="badge me-2" style="background-color: #fd7e14; color: white;">mitre_privilege_escalation</span>
                 </div>
             </div>
         </div>
@@ -925,9 +928,9 @@ This rule helps detect privilege escalation attempts within containerized enviro
                 </div>
                 <div class="sub-section">
                     <strong>Tags:</strong>
-                    <span class="badge bg-secondary me-2">mitre_privilege_escalation</span>
                     <span class="badge bg-secondary">container</span>
                     <span class="badge bg-secondary">host</span>
+                    <span class="badge me-2" style="background-color: #fd7e14; color: white;">mitre_privilege_escalation</span>
                 </div>
             </div>
         </div>
@@ -978,10 +981,9 @@ This rule helps detect privilege escalation attempts within containerized enviro
                 </div>
                 <div class="sub-section">
                     <strong>Tags:</strong>
-                    <span class="badge bg-secondary me-2">mitre_credential_access</span>
-                    <span class="badge bg-secondary me-2">mitre_defense_evasion</span>
                     <span class="badge bg-secondary">container</span>
                     <span class="badge bg-secondary">host</span>
+                    <span class="badge me-2" style="background-color: #fd7e14; color: white;">mitre_credential_access</span>
                 </div>
             </div>
         </div>
@@ -992,7 +994,7 @@ This rule helps detect privilege escalation attempts within containerized enviro
         <img src="assets/bad-curl.jpg" alt="Imagen de Regla 17">
         <div class="rule-content">
             <div class="rule-summary" onclick="toggleDetail('rule17')">
-                Rule 17: Suspicious Curl Activity [custom]
+                Rule 17: Suspicious Curl Activities [custom]
                 <span class="info-icon" onclick="event.stopPropagation()">ℹ
                     <span class="tooltip">Haz clic para desplegar más información</span>
                 </span>
@@ -1032,10 +1034,10 @@ This rule helps detect privilege escalation attempts within containerized enviro
                 </div>
                 <div class="sub-section">
                     <strong>Tags:</strong>
-                    <span class="badge bg-secondary me-2">mitre_execution</span>
                     <span class="badge bg-secondary">container</span>
                     <span class="badge bg-secondary me-2">host</span>
                     <span class="badge bg-secondary me-2">process</span>
+                    <span class="badge me-2" style="background-color: #fd7e14; color: white;">mitre_execution</span>
                 </div>
             </div>
         </div>
@@ -1086,11 +1088,11 @@ This rule helps detect privilege escalation attempts within containerized enviro
                 </div>
                 <div class="sub-section">
                     <strong>Tags:</strong>
-                    <span class="badge bg-secondary me-2">mitre_discovery</span>
-                    <span class="badge bg-secondary me-2">mitre_privilege_escalation</span>
                     <span class="badge bg-secondary">container</span>
                     <span class="badge bg-secondary me-2">host</span>
                     <span class="badge bg-secondary me-2">process</span>
+                    <span class="badge me-2" style="background-color: #fd7e14; color: white;">mitre_privilege_escalation</span>
+                    <span class="badge bg-secondary me-2">mitre_discovery</span>
                 </div>
             </div>
         </div>
@@ -1141,12 +1143,13 @@ This rule helps detect privilege escalation attempts within containerized enviro
                 </div>
                 <div class="sub-section">
                     <strong>Tags:</strong>
-                    <span class="badge bg-secondary me-2">mitre_privilege_escalation</span>
-                    <span class="badge bg-secondary me-2">mitre_lateral_movement</span>
-                    <span class="badge bg-secondary me-2">mitre_execution</span>
                     <span class="badge bg-secondary">container</span>
                     <span class="badge bg-secondary me-2">host</span>
                     <span class="badge bg-secondary me-2">process</span>
+                    <span class="badge me-2" style="background-color: #fd7e14; color: white;">mitre_privilege_escalation</span>
+                    <span class="badge bg-secondary me-2">mitre_lateral_movement</span>
+                    <span class="badge bg-secondary me-2">mitre_exfiltration</span>
+                    <span class="badge bg-secondary me-2">mitre_execution</span>
                 </div>
             </div>
         </div>
@@ -1197,11 +1200,12 @@ This rule helps detect privilege escalation attempts within containerized enviro
                 </div>
                 <div class="sub-section">
                     <strong>Tags:</strong>
-                    <span class="badge bg-secondary me-2">mitre_privilege_escalation</span>
-                    <span class="badge bg-secondary">mitre_defense_evasion</span>
                     <span class="badge bg-secondary">container</span>
                     <span class="badge bg-secondary me-2">host</span>
                     <span class="badge bg-secondary me-2">process</span>
+                    <span class="badge me-2" style="background-color: #fd7e14; color: white;">mitre_privilege_escalation</span>
+                    <span class="badge bg-secondary me-2">mitre_lateral_movement</span>
+                    <span class="badge bg-secondary">mitre_defense_evasion</span>
                 </div>
             </div>
         </div>
@@ -1254,11 +1258,12 @@ This rule helps detect privilege escalation attempts within containerized enviro
             </div>
             <div class="sub-section">
                 <strong>Tags:</strong>
-                <span class="badge bg-secondary me-2">mitre_discovery</span>
-                <span class="badge bg-secondary">mitre_execution</span>
-                <span class="badge bg-secondary me-2">mitre_reconnaissance</span>
                 <span class="badge bg-secondary me-2">host</span>
                 <span class="badge bg-secondary me-2">process</span>
+                <span class="badge me-2" style="background-color: #fd7e14; color: white;">mitre_discovery</span>
+                <span class="badge bg-secondary">mitre_execution</span>
+                <span class="badge bg-secondary me-2">mitre_reconnaissance</span>
+                <span class="badge" style="background-color: #dc3545; color: white;">IRT_Alert</span>
             </div>
         </div>
     </div>
@@ -1309,10 +1314,10 @@ This rule helps detect privilege escalation attempts within containerized enviro
             </div>
             <div class="sub-section">
                 <strong>Tags:</strong>
-                <span class="badge bg-secondary me-2">mitre_credential_access</span>
                 <span class="badge bg-secondary">container</span>
                 <span class="badge bg-secondary me-2">host</span>
                 <span class="badge bg-secondary me-2">process</span>
+                <span class="badge me-2" style="background-color: #fd7e14; color: white;">mitre_credential_access</span>
             </div>
         </div>
     </div>
@@ -1363,11 +1368,11 @@ This rule helps detect privilege escalation attempts within containerized enviro
             </div>
             <div class="sub-section">
                 <strong>Tags:</strong>
-                <span class="badge bg-secondary me-2">mitre_reconnaissance</span>
-                <span class="badge bg-secondary me-2">mitre_discovery</span>
                 <span class="badge bg-secondary">container</span>
                 <span class="badge bg-secondary me-2">host</span>
                 <span class="badge bg-secondary me-2">process</span>
+                <span class="badge me-2" style="background-color: #fd7e14; color: white;">mitre_reconnaissance</span>
+                <span class="badge bg-secondary me-2">mitre_discovery</span>
             </div>
         </div>
     </div>
@@ -1418,9 +1423,10 @@ This rule helps detect privilege escalation attempts within containerized enviro
             </div>
             <div class="sub-section">
                 <strong>Tags:</strong>
-                <span class="badge bg-secondary me-2">mitre_exfiltration</span>
                 <span class="badge bg-secondary">container</span>
                 <span class="badge bg-secondary me-2">host</span>
+                <span class="badge me-2" style="background-color: #fd7e14; color: white;">mitre_exfiltration</span>
+                <span class="badge bg-secondary me-2">mitre_credential_accesss</span>
             </div>
         </div>
     </div>
@@ -1471,10 +1477,11 @@ This rule helps detect privilege escalation attempts within containerized enviro
             </div>
             <div class="sub-section">
                 <strong>Tags:</strong>
-                <span class="badge bg-secondary me-2">mitre_reconnaissance</span>
                 <span class="badge bg-secondary me-2">network</span>
                 <span class="badge bg-secondary">container</span>
                 <span class="badge bg-secondary me-2">host</span>
+                <span class="badge me-2" style="background-color: #fd7e14; color: white;">mitre_reconnaissance</span>
+                <span class="badge" style="background-color: #dc3545; color: white;">IRT_Alert</span>
             </div>
         </div>
     </div>
