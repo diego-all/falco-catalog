@@ -166,9 +166,9 @@
                 </div>
                 <div class="sub-section">
                     <strong>Tags:</strong>
-                    <span class="badge bg-secondary">container</span>
                     <span class="badge bg-secondary me-2">host</span>
-                    <span class="badge bg-secondary me-2">process</span>
+                    <span class="badge bg-secondary">container</span>
+                    <span class="badge me-2" style="background-color: #17a2b8; color: white;">process</span>
                     <span class="badge me-2" style="background-color: #fd7e14; color: white;">mitre_credential_access</span>
                     <span class="badge bg-secondary me-2">mitre_exfiltration</span>
                 </div>
@@ -221,9 +221,9 @@
                 </div>
                 <div class="sub-section">
                     <strong>Tags:</strong>
-                    <span class="badge bg-secondary me-2">container</span>
                     <span class="badge bg-secondary me-2">host</span>
-                    <span class="badge bg-secondary">process</span>
+                    <span class="badge bg-secondary me-2">container</span>
+                    <span class="badge me-2" style="background-color: #17a2b8; color: white;">network</span>
                     <span class="badge me-2" style="background-color: #fd7e14; color: white;">mitre_command_and_control</span>
                     <span class="badge bg-secondary">data_exfiltration</span>
                 </div>
@@ -278,9 +278,9 @@
                 </div>
                 <div class="sub-section">
                     <strong>Tags:</strong>
-                    <span class="badge bg-secondary me-2">container</span>
                     <span class="badge bg-secondary me-2">host</span>
-                    <span class="badge bg-secondary">process</span>
+                    <span class="badge bg-secondary me-2">container</span>
+                    <span class="badge me-2" style="background-color: #17a2b8; color: white;">network</span>
                     <span class="badge me-2" style="background-color: #fd7e14; color: white;">mitre_command_and_control</span>
                 </div>
             </div>
@@ -333,8 +333,9 @@
             </div>
             <div class="sub-section">
                 <strong>Tags:</strong>
-                <span class="badge me-2" style="background-color: #17a2b8; color: white;">detection_surface</span>
+                <span class="badge bg-secondary me-2">host</span>
                 <span class="badge bg-secondary me-2">container</span>
+                <span class="badge me-2" style="background-color: #17a2b8; color: white;">process</span>
                 <span class="badge me-2" style="background-color: #fd7e14; color: white;">mitre_discovery</span>
                 <span class="badge bg-secondary me-2">mitre_execution</span>
                 <span class="badge" style="background-color: #dc3545; color: white;">IRT_Alert</span>
@@ -388,7 +389,9 @@
             </div>
             <div class="sub-section">
                 <strong>Tags:</strong>
+                <span class="badge bg-secondary me-2">host</span>
                 <span class="badge bg-secondary me-2">container</span>
+                <span class="badge me-2" style="background-color: #17a2b8; color: white;">database</span>
                 <span class="badge me-2" style="background-color: #fd7e14; color: white;">mitre_exfiltration</span>
                 <span class="badge" style="background-color: #dc3545; color: white;">IRT_Alert</span>
             </div>
@@ -443,7 +446,9 @@
             </div>
             <div class="sub-section">
                 <strong>Tags:</strong>
+                <span class="badge bg-secondary me-2">host</span>
                 <span class="badge bg-secondary me-2">container</span>
+                <span class="badge me-2" style="background-color: #17a2b8; color: white;">database</span>
                 <span class="badge me-2" style="background-color: #fd7e14; color: white;">mitre_exfiltration</span>
             </div>
         </div>
@@ -1547,7 +1552,7 @@ This rule helps detect privilege escalation attempts within containerized enviro
     <img src="assets/capability-warning.svg" alt="Imagen de Regla 32">
     <div class="rule-content">
         <div class="rule-summary" onclick="toggleDetail('rule32')">
-            Rule 32: Random 32 [custom]
+            Rule 32: volumes exec sync containerd [custom]
             <span class="info-icon" onclick="event.stopPropagation()">ℹ
                 <span class="tooltip">Haz clic para desplegar más información</span>
             </span>
@@ -1623,6 +1628,271 @@ This rule helps detect privilege escalation attempts within containerized enviro
                 </span>
             </div>
             <div class="sub-detail" id="pertinencia33">
+                Monitoring for unexpected process names is critical for detecting potential intrusions in container environments.
+            </div>
+
+            <div class="sub-section">
+                <strong>Environment:</strong> Production
+            </div>
+            <div class="sub-section">
+                <strong>Rule status:</strong>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" 
+                         aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%;">
+                        85%
+                    </div>
+                </div>
+            </div>
+            <div class="sub-section">
+                <strong>Tags:</strong>
+                <span class="badge bg-secondary me-2">process_monitoring</span>
+                <span class="badge bg-secondary">anomaly_detection</span>
+                <span class="badge bg-secondary">security</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Rule 34 -->
+<div class="rule">
+    <img src="assets/process-name-detection.svg" alt="Imagen de Regla 34">
+    <div class="rule-content">
+        <div class="rule-summary" onclick="toggleDetail('rule34')">
+            Rule 34: Random 34 [custom]
+            <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                <span class="tooltip">Haz clic para desplegar más información</span>
+            </span>
+        </div>
+        <div class="rule-detail" id="rule34">
+            <div class="sub-section" onclick="toggleSubDetail('desc34')">
+                Description 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="desc34">
+                Identifies anomalies in process names that could indicate malicious activity or unauthorized access attempts.
+            </div>
+
+            <div class="sub-section" onclick="toggleSubDetail('pertinencia34')">
+                Relevance
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="pertinencia34">
+                Monitoring for unexpected process names is critical for detecting potential intrusions in container environments.
+            </div>
+
+            <div class="sub-section">
+                <strong>Environment:</strong> Production
+            </div>
+            <div class="sub-section">
+                <strong>Rule status:</strong>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" 
+                         aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%;">
+                        85%
+                    </div>
+                </div>
+            </div>
+            <div class="sub-section">
+                <strong>Tags:</strong>
+                <span class="badge bg-secondary me-2">process_monitoring</span>
+                <span class="badge bg-secondary">anomaly_detection</span>
+                <span class="badge bg-secondary">security</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Rule 35 -->
+<div class="rule">
+    <img src="assets/process-name-detection.svg" alt="Imagen de Regla 35">
+    <div class="rule-content">
+        <div class="rule-summary" onclick="toggleDetail('rule35')">
+            Rule 35: p3regrinus detection patterns (Catalogar tipo de malware) [custom]
+            <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                <span class="tooltip">Haz clic para desplegar más información</span>
+            </span>
+        </div>
+        <div class="rule-detail" id="rule35">
+            <div class="sub-section" onclick="toggleSubDetail('desc35')">
+                Description 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="desc35">
+                Rootkit behaviors, backdoor behaviors inside a container.
+            </div>
+
+            <div class="sub-section" onclick="toggleSubDetail('pertinencia35')">
+                Relevance
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="pertinencia35">
+                Monitoring for unexpected process names is critical for detecting potential intrusions in container environments.
+            </div>
+
+            <div class="sub-section">
+                <strong>Environment:</strong> Production
+            </div>
+            <div class="sub-section">
+                <strong>Rule status:</strong>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" 
+                         aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%;">
+                        85%
+                    </div>
+                </div>
+            </div>
+            <div class="sub-section">
+                <strong>Tags:</strong>
+                <span class="badge bg-secondary me-2">process_monitoring</span>
+                <span class="badge bg-secondary">anomaly_detection</span>
+                <span class="badge bg-secondary">security</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Rule 36 -->
+<div class="rule">
+    <img src="assets/process-name-detection.svg" alt="Imagen de Regla 36">
+    <div class="rule-content">
+        <div class="rule-summary" onclick="toggleDetail('rule36')">
+            Rule 36: Random 36 [custom]
+            <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                <span class="tooltip">Haz clic para desplegar más información</span>
+            </span>
+        </div>
+        <div class="rule-detail" id="rule36">
+            <div class="sub-section" onclick="toggleSubDetail('desc36')">
+                Description 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="desc36">
+                Identifies anomalies in process names that could indicate malicious activity or unauthorized access attempts.
+            </div>
+
+            <div class="sub-section" onclick="toggleSubDetail('pertinencia36')">
+                Relevance
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="pertinencia36">
+                Monitoring for unexpected process names is critical for detecting potential intrusions in container environments.
+            </div>
+
+            <div class="sub-section">
+                <strong>Environment:</strong> Production
+            </div>
+            <div class="sub-section">
+                <strong>Rule status:</strong>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" 
+                         aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%;">
+                        85%
+                    </div>
+                </div>
+            </div>
+            <div class="sub-section">
+                <strong>Tags:</strong>
+                <span class="badge bg-secondary me-2">process_monitoring</span>
+                <span class="badge bg-secondary">anomaly_detection</span>
+                <span class="badge bg-secondary">security</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Rule 37 -->
+<div class="rule">
+    <img src="assets/process-name-detection.svg" alt="Imagen de Regla 37">
+    <div class="rule-content">
+        <div class="rule-summary" onclick="toggleDetail('rule37')">
+            Rule 37: Random 37 [custom]
+            <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                <span class="tooltip">Haz clic para desplegar más información</span>
+            </span>
+        </div>
+        <div class="rule-detail" id="rule37">
+            <div class="sub-section" onclick="toggleSubDetail('desc37')">
+                Description 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="desc37">
+                Identifies anomalies in process names that could indicate malicious activity or unauthorized access attempts.
+            </div>
+
+            <div class="sub-section" onclick="toggleSubDetail('pertinencia37')">
+                Relevance
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="pertinencia37">
+                Monitoring for unexpected process names is critical for detecting potential intrusions in container environments.
+            </div>
+
+            <div class="sub-section">
+                <strong>Environment:</strong> Production
+            </div>
+            <div class="sub-section">
+                <strong>Rule status:</strong>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" 
+                         aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%;">
+                        85%
+                    </div>
+                </div>
+            </div>
+            <div class="sub-section">
+                <strong>Tags:</strong>
+                <span class="badge bg-secondary me-2">process_monitoring</span>
+                <span class="badge bg-secondary">anomaly_detection</span>
+                <span class="badge bg-secondary">security</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Rule 38 -->
+<div class="rule">
+    <img src="assets/process-name-detection.svg" alt="Imagen de Regla 38">
+    <div class="rule-content">
+        <div class="rule-summary" onclick="toggleDetail('rule38')">
+            Rule 38: Random 38 [custom]
+            <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                <span class="tooltip">Haz clic para desplegar más información</span>
+            </span>
+        </div>
+        <div class="rule-detail" id="rule38">
+            <div class="sub-section" onclick="toggleSubDetail('desc38')">
+                Description 
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="desc38">
+                Identifies anomalies in process names that could indicate malicious activity or unauthorized access attempts.
+            </div>
+
+            <div class="sub-section" onclick="toggleSubDetail('pertinencia38')">
+                Relevance
+                <span class="info-icon" onclick="event.stopPropagation()">ℹ
+                    <span class="tooltip">Haz clic para desplegar más información</span>
+                </span>
+            </div>
+            <div class="sub-detail" id="pertinencia38">
                 Monitoring for unexpected process names is critical for detecting potential intrusions in container environments.
             </div>
 
